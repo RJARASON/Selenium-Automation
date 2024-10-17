@@ -6,9 +6,9 @@ from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from sendGmail import SendEmail
+import pyautogui
 
-s = Service('C:\\Users\Steiner Paul Tidings\\Documents\\Kodjo Messi\\Selenium-Automation-main\\Automation\\chromedriver-win64\\chromedriver.exe')
+s = Service('C:\\Users\\MESSIE\\Documents\\Brightchamps\\Automation\\chromedriver-win64\\chromedriver-win32\\chromedriver.exe')
 driver = webdriver.Chrome(service=s)
 wait = WebDriverWait(driver, 30)
 
@@ -32,32 +32,42 @@ def Login():
 
 def Search():
     # inputbox=driver.find_element(By.XPATH,"//input[@placeholder='Search']")
-    inputbox=wait.until(EC.element_to_be_clickable((By.XPATH,"//input[@placeholder='Search']")))
+    inputField=wait.until(EC.element_to_be_clickable((By.XPATH,"//input[@placeholder='Search']")))
+    inputbox=driver.find_element(By.CLASS_NAME,"search-global-typeahead__input")
     inputbox=driver.find_element(By.CLASS_NAME,"search-global-typeahead__input")
     inputbox.send_keys(Keys.ADD)
     inputbox.send_keys("Steiner paul tidings")
+    print('Input is ',inputField.text)
     inputbox.send_keys(Keys.ENTER)
     inputbox.click()
+    # print('Input is ',inputbox.text)
     time.sleep(6)
+
 
 def Viewprofile():
     # button=wait.until(EC.element_to_be_clickable((By.XPATH,"//span[normalize-space()='View full profile']")))
-    button=driver.find_element(By.XPATH,"//*[text()='View full profile']")
+    button=driver.find_element(By.XPATH,"//*[text()=View full profile]")
     button.click()
     time.sleep(6)
-    # msgbtn1=driver.find_element(By.XPATH,"//button[@id='ember189']")
-    # msgbtn1.click()
-    # time.sleep(6)
+    msgbtn1=driver.find_element(By.XPATH,"//button[@id='ember189']")
+    msgbtn1.click()
+
+    time.sleep(6)
 
 
 def messageuser():
-    # msgbtn=wait.until(EC.element_to_be_clickable((By.XPATH,"//button[.//span[text()='Message']]")))
-    # msgbtn=wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@aria-label, 'Message')]")))
-    # msgbtn=driver.find_element(By.XPATH, "//div[.//button[contains(@aria-label, 'Message')]]")
-    msgbtn=driver.find_element(By.XPATH, "")
-    #sgbtn.click()
-    # msgbtn=driver.find_element
-    # (By.CLASS_NAME,"artdeco-button__text")
+    # pyautogui.click(x=547,y=461)
+    # pyautogui.click(duration=2)
+    # time.sleep(2)
+    # pyautogui.click(x=712,y=591)
+    # pyautogui.click(duration=2)
+    # pyautogui.typewrite("Hello Paul. It's great connecting with you. How have you been?")
+    # time.sleep(5)
+    # pyautogui.click(x=1008,y=196)
+    # pyautogui.click(duration=2)
+    msgbtn=wait.until(EC.element_to_be_clickable((By.XPATH,"//button[@id='ember214']")))
+    msgbtn.click()
+    # msgbtn=driver.find_element(By.CLASS_NAME,"artdeco-button__text")
     textbox=driver.find_element(By.CLASS_NAME,"msg-form__contenteditable t-14 t-black--light t-normal flex-grow-1 full-height notranslate")
     textbox.click()
     textmsg=driver.find_element(By.XPATH,"1")
@@ -71,8 +81,7 @@ def LinkedIn():
     Login()
     Search()
     Viewprofile()
-    # messageuser()
-    SendEmail()
+    messageuser()
 LinkedIn()
 
 
@@ -87,7 +96,7 @@ def Signout():
 
 
 def SignUp():
-    s = Service('C:\\Users\\MESSIE\\Documents\\Brightchamps\\Automation\\chromedriver-win64\\chromedriver.exe')
+    s = Service('C:\\Users\\MESSIE\\Documents\\Brightchamps\\Automation\\chromedriver-win64\\chromedriver-win32\\chromedriver.exe')
     driver = webdriver.Chrome(service=s)
 
     driver.get('https://www.linkedin.com/home')
@@ -101,4 +110,5 @@ def SignUp():
     password.send_keys("5802671d")
     signbtn=driver.find_element(By.XPATH,"//button[@id='join-form-submit']")
     signbtn.click()
+# SignUp()
     

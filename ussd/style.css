@@ -1,0 +1,43 @@
+body{
+    background-color: #a8a8a8;
+}
+.simulate{
+    width: 360px;
+    height: 540px;
+    background: aliceblue;
+    border-radius: 11px;
+    margin: 40px 480px;
+}
+.divtext .row{
+    margin: 270px -1px;
+    width: 100vh;
+}
+.divtext .row input{
+    font-size: 20px;
+    height: 5vh;
+}
+.divtext .row button{
+    font-size: 20px;
+    height: 5vh;
+    background: #040498;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #fff;
+}
+.divtext .row button:hover{
+    background: #0000e7;
+}
+
+.divtext h1{
+    font-size: 18px;
+}
+
+.divtext{
+    margin: -550px 500px;
+}
+
+.divtext #listbox li{
+    list-style: none;
+}
